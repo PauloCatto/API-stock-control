@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "build": "prisma generate && tsc",
+    "build": "prisma generate",
     "vercel-build": "npm run build"
   },
   "devDependencies": {
