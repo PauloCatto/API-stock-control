@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "build": "prisma generate",
+    "build": "prisma generate && tsc",
     "vercel-build": "npm run build"
   },
   "devDependencies": {
@@ -28,7 +28,6 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.0",
     "prisma": "^4.10.1",
-    "serverless-http": "^3.2.0",
-    "stock-api": "file:"
+    "serverless-http": "^3.2.0"
   }
 }
