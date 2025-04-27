@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "build": "tsc"
+    "build": "prisma generate && tsc"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
