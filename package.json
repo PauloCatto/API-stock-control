@@ -6,12 +6,13 @@
   "engines": {
     "node": "22.x"
   },
-  "scripts": {
-    "start": "ts-node src/server.ts",
-    "dev": "ts-node-dev --transpile-only src/server.ts",
-    "build": "npx prisma generate --schema=prisma/schema.prisma && npx prisma migrate deploy --schema=prisma/schema.prisma && tsc",
-    "postinstall": "npx prisma generate --schema=prisma/schema.prisma"
-  },
+ "scripts": {
+ "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+  "build": "prisma generate && tsc",
+  "start": "node dist/server.js",
+  "vercel-build": "prisma generate && prisma migrate deploy && tsc",
+  "postinstall": "prisma generate"
+},
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.13",
@@ -26,6 +27,7 @@
     "bcryptjs": "^2.4.3",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.0",

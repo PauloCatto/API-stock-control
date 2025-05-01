@@ -7,6 +7,16 @@
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/src/server.ts" }
-  ]
+    {
+      "src": "/(.*)",
+      "dest": "src/server.ts",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+    }
+  ],
+  "functions": {
+    "src/server.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }
