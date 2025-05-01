@@ -6,11 +6,12 @@
   "engines": {
     "node": "22.x"
   },
- "scripts": {
-  "start": "ts-node src/server.ts",
-  "dev": "ts-node-dev --transpile-only src/server.ts",
-  "vercel-build": "npx prisma generate && npx prisma migrate deploy && tsc"
-},
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "dev": "ts-node-dev --transpile-only src/server.ts",
+    "build": "npx prisma generate --schema=prisma/schema.prisma && npx prisma migrate deploy --schema=prisma/schema.prisma && tsc",
+    "postinstall": "npx prisma generate --schema=prisma/schema.prisma"
+  },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.13",
