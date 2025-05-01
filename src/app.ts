@@ -6,13 +6,14 @@ import prisma from "./prisma";
 
 const app = express();
 
-// Middleware de timeout explícito
 app.use((req, res, next) => {
-  res.setTimeout(10000, () => { // 10 segundos por requisição
+  const timeout = setTimeout(() => {
     if (!res.headersSent) {
       res.status(504).json({ error: "Request timeout" });
     }
-  });
+  }, 10000);
+
+  res.on('finish', () => clearTimeout(timeout));
   next();
 });
 
