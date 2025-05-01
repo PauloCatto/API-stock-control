@@ -2,14 +2,17 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import "express-async-errors";
 import { router } from "./routes";
+import timeout from "connect-timeout";
 
 const app = express();
 
+app.use(timeout("55s")); 
 app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'none'; style-src 'self' https://www.gstatic.com;"
-  );
+  console.log(`Requisição recebida: ${req.method} ${req.url}`);
+  const start = Date.now();
+  res.on("finish", () => {
+    console.log(`Requisição finalizada: ${req.method} ${req.url} - Tempo: ${Date.now() - start}ms`);
+  });
   next();
 });
 
