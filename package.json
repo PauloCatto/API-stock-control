@@ -10,7 +10,6 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "prisma generate && tsc",
     "start": "node dist/server.js",
-    "vercel-build": "prisma generate && prisma migrate deploy && tsc",
     "postinstall": "prisma generate"
   },
   "devDependencies": {
@@ -18,12 +17,12 @@
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.1",
-    "prisma": "^6.7.0",
+    "prisma": "^6.12.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.0"
   },
   "dependencies": {
-    "@prisma/client": "^6.7.0",
+    "@prisma/client": "^6.12.0",
     "bcryptjs": "^2.4.3",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
@@ -31,7 +30,6 @@
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.0",
-    "serverless-http": "^3.2.0",
-    "stock-api": "file:"
+    "serverless-http": "^3.2.0"
   }
 }
