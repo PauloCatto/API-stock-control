@@ -3,8 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
-const PORT = process.env.PORT || 3333;
-app_1.default.listen(PORT, () => {
-    console.log(`🟢 Servidor rodando na porta ${PORT}`);
-});
+exports.handler = void 0;
+const serverless_http_1 = __importDefault(require("serverless-http"));
+const app_1 = __importDefault(require("../app"));
+exports.handler = (0, serverless_http_1.default)(app_1.default);
