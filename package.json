@@ -7,10 +7,9 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "prisma generate && tsc",
-    "start": "node dist/server.js",
-    "postinstall": "prisma generate"
+    "dev": "ts-node-dev --transpile-only src/server.ts",
+    "build": "npx prisma generate && tsc",
+    "start": "node dist/server.js"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
