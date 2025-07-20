@@ -1,12 +1,13 @@
-import app from './app';
-import prisma from './prisma';
+import app from "./app";
+import prisma from "./prisma";
 
 async function main() {
   try {
     await prisma.$connect();
     console.log("Prisma conectado!");
-    const port = process.env.PORT || 10000;
-    app.listen(port, () => {
+    const port = Number(process.env.PORT) || 10000;
+
+    app.listen(port, "0.0.0.0", () => {
       console.log(`🟢 Servidor rodando na porta ${port}`);
     });
   } catch (error) {
