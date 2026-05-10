@@ -6,13 +6,10 @@ const startServer = async () => {
     await prisma.$connect();
     console.log("Database connected successfully");
 
-    // Only start server in development, not in serverless environment
-    if (process.env.NODE_ENV !== 'production') {
-      const port = process.env.PORT || 3333;
-      app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
-      });
-    }
+    const port = process.env.PORT || 3333;
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
   } catch (error) {
     console.error("Failed to start server:", error);
     await prisma.$disconnect();
@@ -20,11 +17,7 @@ const startServer = async () => {
   }
 };
 
-// For serverless environments (Render/Vercel)
-if (process.env.NODE_ENV === 'production') {
-  // Export the app directly
-  module.exports = app;
-} else {
-  // Start server for development
-  startServer();
-}
+startServer();
+
+// Also export for Vercel/serverless environments just in case
+export default app;
