@@ -28,16 +28,14 @@ API REST robusta e escalável desenvolvida para o ecossistema Stock Control, uti
 
 ## 🚀 Como Iniciar
 
-### Configuração do Ambiente
+### Configuração do Ambiente (Exemplo Local)
 1. Clone o repositório.
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-3. Configure o arquivo `.env` com sua string de conexão PostgreSQL:
+2. Instale as dependências: `npm install`.
+3. Crie um arquivo `.env` na raiz do projeto e configure suas variáveis (veja o exemplo abaixo):
    ```env
+   # Exemplo de configuração (Não envie seu .env real para o GitHub!)
    DATABASE_URL="postgresql://user:password@localhost:5432/stock_db"
-   JWT_SECRET="sua_chave_secreta"
+   JWT_SECRET="sua_chave_secreta_aqui"
    ```
 4. Execute as migrações do banco:
    ```bash
