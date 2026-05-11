@@ -1,5 +1,7 @@
 import app from "./app";
 import prisma from "./prisma";
+import { createServer } from "http";
+import { setupWebsocket } from "./websocket";
 
 const startServer = async () => {
   try {
@@ -7,7 +9,10 @@ const startServer = async () => {
     console.log("Database connected successfully");
 
     const port = process.env.PORT || 3333;
-    app.listen(port, () => {
+    const httpServer = createServer(app);
+    setupWebsocket(httpServer);
+
+    httpServer.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
   } catch (error) {
