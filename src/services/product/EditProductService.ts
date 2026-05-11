@@ -1,5 +1,6 @@
 import { EditProductRequest } from "../../models/interfaces/product/EditProductRequest";
 import prismaClient from "../../prisma";
+import { io } from "../../websocket";
 
 class EditProductService {
   async execute({
@@ -32,6 +33,8 @@ class EditProductService {
         category_id: category_id
       },
     });
+    
+    io?.emit("product_updated");
     return productEdited;
   }
 }

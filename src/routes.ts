@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-/* Controllers */
+
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
 import { isAuthenticated } from "./middlewares/isAuthenticated";
@@ -13,14 +13,16 @@ import { EditProductController } from "./controllers/product/EditProductControll
 import { ListProductsController } from "./controllers/product/ListProductsController";
 import { DeleteProductController } from "./controllers/product/DeleteProductController";
 import { SaleProductController } from "./controllers/product/SaleProductController";
+import { ChangePasswordController } from "./controllers/user/ChangePasswordController";
 
 const router = Router();
 
-/* USER */
+
 router.post("/user", new CreateUserController().handle);
 router.post("/auth", new AuthUserController().handle);
+router.put("/user/password", new ChangePasswordController().handle);
 
-/* CATEGORY */
+
 router.post(
   "/category",
   isAuthenticated,
@@ -42,7 +44,7 @@ router.delete(
   new DeleteCategoryController().handle
 );
 
-/* PRODUCT */
+
 router.post("/product", isAuthenticated, new CreateProductController().handle);
 router.put(
   "/product/edit",

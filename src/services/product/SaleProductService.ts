@@ -1,5 +1,6 @@
 import prismaClient from "../../prisma/index";
 import { SaleProductRequest } from "../../models/interfaces/product/SaleProductRequest";
+import { io } from "../../websocket";
 
 class SaleProductService {
   async execute({ product_id, amount }: SaleProductRequest) {
@@ -28,6 +29,8 @@ class SaleProductService {
           amount: true,
         },
       });
+      
+      io?.emit("product_updated");
       return saveSale;
     } else {
       throw new Error("Não foi possível efetuar a venda!");

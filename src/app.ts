@@ -10,7 +10,7 @@ app.use((req, res, next) => {
     if (!res.headersSent) {
       res.status(504).json({ error: "Request timeout" });
     }
-  }, 10000);
+  }, 30000);
 
   res.on("finish", () => clearTimeout(timeout));
   next();
@@ -36,8 +36,10 @@ app.get("/", (req, res) => {
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err);
-  res.status(500).json({ error: "Internal Server Error" });
+  console.error(err.message);
+  if (!res.headersSent) {
+    res.status(400).json({ error: err.message });
+  }
 });
 
 export default app;

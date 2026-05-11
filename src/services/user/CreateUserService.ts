@@ -18,10 +18,10 @@ class CreateUserService {
       throw new Error("Email already exists");
     }
 
-    // Encriptando a nossa senha do usuário
+    
     const passwordHash = await hash(password, 8);
 
-    // Criando nosso usuário
+    
     const user = prismaClient.user.create({
       data: {
         name: name,

@@ -1,4 +1,5 @@
 import prismaClient from "../../prisma";
+import { io } from "../../websocket";
 
 interface DeleteProductRequest {
   product_id: string;
@@ -15,6 +16,8 @@ class DeleteProductService {
         id: product_id,
       },
     });
+    
+    io?.emit("product_updated");
     return deleteProduct;
   }
 }
