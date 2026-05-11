@@ -24,5 +24,5 @@ const startServer = async () => {
 
 startServer();
 
-// Also export for Vercel/serverless environments just in case
+
 export default app;

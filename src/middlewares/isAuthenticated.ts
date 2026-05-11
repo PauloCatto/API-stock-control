@@ -7,7 +7,7 @@ export function isAuthenticated(
   response: Response,
   next: NextFunction
 ) {
-  // Acessar token JWT
+  
   const authToken = request.headers.authorization;
 
   if (!authToken) {
@@ -17,10 +17,10 @@ export function isAuthenticated(
   const [, token] = authToken.split(" ");
 
   try {
-    // Validar token
+    
     const { sub } = verify(token, process.env.JWT_SECRET as string) as Payload;
     request.user_id = sub;
-    return next(); // Deixa que a requisição prossiga
+    return next(); 
   } catch (error) {
     return response.status(401).end();
   }

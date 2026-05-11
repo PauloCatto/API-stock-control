@@ -6,7 +6,7 @@ export let io: Server;
 export function setupWebsocket(httpServer: HttpServer) {
   io = new Server(httpServer, {
     cors: {
-      origin: "*", // Em produção, você pode restringir isso para a URL do seu frontend
+      origin: "*", 
       methods: ["GET", "POST", "PUT", "DELETE"]
     },
   });
