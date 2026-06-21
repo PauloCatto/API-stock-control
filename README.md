@@ -51,5 +51,3 @@ API REST robusta e escalável desenvolvida para o ecossistema Stock Control, uti
 *   `src/services`: Camada de lógica de negócio (Regras da aplicação).
 *   `src/prisma`: Configurações e esquemas do banco de dados.
 
----
-Desenvolvido por [Paulo Catto](https://github.com/PauloCatto)
