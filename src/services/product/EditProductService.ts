@@ -29,7 +29,7 @@ class EditProductService {
         name: name,
         amount: +amount,
         description: description,
-        price: price,
+        price: String(price),
         category_id: category_id
       },
     });
