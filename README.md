@@ -6,9 +6,10 @@ API REST robusta e escalável desenvolvida para o ecossistema Stock Control, uti
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)
 ![Prisma](https://img.shields.io/badge/Prisma-ORM-2d3748?logo=prisma)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-DB-4169e1?logo=postgresql)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/your-template-id)
 
 ## 🌐 API Endpoint
-🔗 **Base URL:** [https://api-stock-control-paulo.onrender.com](https://api-stock-control-paulo.onrender.com)
+🔗 **Base URL:** [https://api-stock-control-production-276e.up.railway.app](https://api-stock-control-production-276e.up.railway.app)
 
 ## ⚙️ Funcionalidades Backend
 
@@ -45,6 +46,35 @@ API REST robusta e escalável desenvolvida para o ecossistema Stock Control, uti
    ```bash
    npm run dev
    ```
+
+## 🚂 Deploy (Railway)
+
+Esta API está hospedada no **[Railway](https://railway.com)**.
+
+### Variáveis de Ambiente no Railway
+
+Ao fazer o deploy, configure as seguintes variáveis no painel do Railway:
+
+| Variável | Descrição |
+|---|---|
+| `DATABASE_URL` | URL de conexão com o PostgreSQL (gerada automaticamente pelo Railway) |
+| `JWT_SECRET` | Chave secreta para assinatura dos tokens JWT |
+| `PORT` | Porta da aplicação (o Railway define automaticamente) |
+
+### Passos para Deploy
+
+1. Faça o fork ou clone deste repositório.
+2. Acesse [railway.com](https://railway.com) e crie um novo projeto.
+3. Selecione **"Deploy from GitHub repo"** e conecte este repositório.
+4. Adicione um serviço **PostgreSQL** ao projeto.
+5. Configure as variáveis de ambiente listadas acima.
+6. O Railway irá detectar o `package.json` e realizar o build automaticamente.
+7. Após o deploy, execute as migrações:
+   ```bash
+   npx prisma migrate deploy
+   ```
+
+---
 
 ## 📂 Estrutura do Projeto
 *   `src/controllers`: Recebimento de requisições e retorno de respostas.
