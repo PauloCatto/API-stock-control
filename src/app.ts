@@ -6,6 +6,9 @@ import prisma from "./prisma";
 
 const app = express();
 
+app.use(cors());
+app.use(express.json({ limit: "10kb" }));
+
 app.use((req, res, next) => {
   const timeout = setTimeout(() => {
     if (!res.headersSent) {
@@ -16,9 +19,6 @@ app.use((req, res, next) => {
   res.on("finish", () => clearTimeout(timeout));
   next();
 });
-
-app.use(express.json({ limit: "10kb" }));
-app.use(cors());
 
 app.use((req, res, next) => {
   const start = Date.now();
