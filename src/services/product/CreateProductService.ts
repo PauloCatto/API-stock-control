@@ -1,6 +1,5 @@
 import { CreateProductRequest } from "../../models/interfaces/product/CreateProductRequest";
 import prismaClient from "../../prisma";
-import { io } from "../../websocket";
 
 class CreateProductService {
   async execute({
@@ -19,9 +18,7 @@ class CreateProductService {
         amount: +amount,
       },
     });
-    
-    io?.emit("product_updated");
-    return product;
+        return product;
   }
 }
 
