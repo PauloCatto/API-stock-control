@@ -1,4 +1,4 @@
-# 🚀 Stock Control API
+# 📦 Stock Control API
 
 API REST robusta e escalável desenvolvida para o ecossistema Stock Control, utilizando **Node.js**, **Express**, **TypeScript** e **Prisma ORM**.
 
@@ -13,24 +13,22 @@ API REST robusta e escalável desenvolvida para o ecossistema Stock Control, uti
 ## ⚙️ Funcionalidades Backend
 
 * 🔐 **Autenticação JWT:** Sistema de login seguro com tokens de acesso.
-* 🏗️ **Arquitetura Service Layer:** Lógica de negócio isolada para maior testabilidade.
-* 💾 **Integridade de Dados:** Travas de segurança via Prisma para evitar deleção de categorias com produtos vinculados.
-* 📡 **WebSockets (Socket.io):** Emissão de eventos em tempo real para atualização instantânea do dashboard.
-* 🛠️ **Tratamento de Erros:** Middleware global para captura e retorno de mensagens amigáveis ao frontend.
+* 🏗️ **Arquitetura Service Layer:** Lógica de negócio isolada para maior testabilidade e manutenibilidade.
+* 🔒 **Integridade de Dados:** Travas de segurança via Prisma para evitar deleção de categorias com produtos vinculados.
+* 🔎 **Tratamento de Erros:** Middleware global para captura e retorno de mensagens amigáveis ao frontend.
 
 ---
 
-## 🛠️ Stack Tecnológica
+## 🔥 Stack Tecnológica
 
 * **Node.js & Express:** Servidor e roteamento REST.
 * **Prisma ORM:** Manipulação do banco de dados PostgreSQL.
 * **TypeScript:** Tipagem estática para maior segurança no desenvolvimento.
-* **Socket.io:** Comunicação bidirecional em tempo real.
 * **BCrypt:** Hashing de senhas para segurança de usuários.
 
 ---
 
-## 💻 Como Iniciar Localmente
+## 🚀 Como Iniciar Localmente
 
 1. **Clone o repositório:**
    ```bash
@@ -62,9 +60,11 @@ API REST robusta e escalável desenvolvida para o ecossistema Stock Control, uti
 
 ---
 
-## 📐 Deploy na Vercel
+## ☁️ Deploy na Vercel
 
 Esta API está otimizada para deploy em arquitetura **Serverless na Vercel**.
+
+> **Nota de Arquitetura:** Por ser executada em ambiente serverless, a API adota um modelo stateless baseado em requisições HTTP. Conexões persistentes (como WebSockets) não são compatíveis com esse modelo de execução — uma limitação inerente à plataforma, documentada pela própria Vercel.
 
 ### Variáveis de Ambiente no Painel da Vercel
 
@@ -90,7 +90,7 @@ Ao configurar o projeto na Vercel, defina as seguintes **Environment Variables**
 
 ---
 
-## 📂 Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```text
 ├── api/             # Handler Serverless para Vercel
@@ -100,7 +100,6 @@ Ao configurar o projeto na Vercel, defina as seguintes **Environment Variables**
 │   ├── services/    # Lógica de negócio e regras de aplicação
 │   ├── middlewares/ # Middlewares de autenticação e tratamento de erros
 │   ├── routes.ts    # Definição de rotas da aplicação
-│   ├── app.ts       # Configuração do Express e Middlewares
-│   └── server.ts    # Inicialização do servidor HTTP e WebSockets
+│   └── app.ts       # Configuração do Express e Middlewares
 └── vercel.json      # Configuração de roteamento da Vercel
 ```
