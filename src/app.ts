@@ -6,7 +6,27 @@ import prisma from "./prisma";
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  "https://stock-control-self.vercel.app",
+  "http://localhost:4200",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS: Origin '${origin}' not allowed`));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+app.options("*", cors());
 app.use(express.json({ limit: "10kb" }));
 
 app.use((req, res, next) => {
